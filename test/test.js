@@ -1,8 +1,16 @@
-var assert = require('assert');
+var chai = require('chai');
+var should = require('chai').should();
+var expect = chai.expect;
 var BMI = require('../app.js');
 
 describe('BMI tests', function(){
   it('should return 24.930747922437675 if height is 1.90 and weight is 90', function (){
-    assert.equal(BMI(1.90,90), 24.930747922437675);
+    var height = 1.90;
+    var weight = 90;
+
+    var expected = 24.930747922437675;
+    var actual = BMI(height, weight);
+
+    expect(actual).to.equal(expected);
   })
 })
