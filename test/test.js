@@ -1,16 +1,17 @@
 var chai = require('chai');
 var should = require('chai').should();
-var expect = chai.expect;
-var BMI = require('../app.js');
+var sinon = require('sinon');
+var assert = require('assert');
 
-describe('BMI tests', function(){
-  it('should return 24.930747922437675 if height is 1.90 and weight is 90', function (){
-    var height = 1.90;
-    var weight = 90;
+var UserAccountsService = require('../app.js');
 
-    var expected = 24.930747922437675;
-    var actual = BMI(height, weight);
+  it('Get users data', function (){
+    var email1 = 'pawel.klasa@gmail.com';
+    var email2 = 'pav@gmail.com';
 
-    expect(actual).to.equal(expected);
+    var accountService = new UserAccountsService();
+    var mockAcountService = sinon.mock(accountService);
+    mockAcountService.expects('getData').exaclty(3);
+    accountService.fetchData();
+    mockAcountService.verify();
   })
-})
